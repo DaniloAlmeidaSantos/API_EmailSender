@@ -14,9 +14,12 @@ const emailSender = require('./src/controllers/sendEmail');
 const app = express();
 
 app.use(session({
-    secret: "DBjhBnmnDB nasadbJHGFDHGSVAd @YTEY#@&Yhb3e7436 BDAHGDYSm DBHSDASD",
+    secret: process.env.SECRET_SESSION,
     cookie: {
-        maxAge: 3000000000
+        secure: false,
+        path: "/",
+        httpOnly: true,
+        maxAge: Number(process.env.AGE_SESSION)
     }
 }));
 

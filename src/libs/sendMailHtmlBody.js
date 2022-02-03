@@ -6,6 +6,7 @@ const handlebars = require('handlebars');
 
 module.exports = {
     /**
+     * Method for send email with html
      * 
      * @param {String} subject 
      * @param {String} text 
@@ -28,7 +29,7 @@ module.exports = {
             });
         };
 
-        await db.select().where('id', id).table('users')
+        await db.select().where('US_ID', id).table('JB_USERS')
         .then(data => {
             if (data.length > 0) {
                 readHTMLFile(htmlPath, function(err, html) {
@@ -51,7 +52,7 @@ module.exports = {
 
                         const sendEmail = {
                             from: process.env.MAIL_USER_EMAIL,
-                            to: data[0].EMAIL,
+                            to: data[0].US_EMAIL,
                             subject: subject,
                             html: htmlToSend
                         }
